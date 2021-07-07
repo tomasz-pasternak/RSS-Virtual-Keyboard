@@ -1,7 +1,7 @@
 export default [
     {
         small:'CapsLock',
-        shift:null,
+        shift: null,
         code:'CapsLock',
     },
     {
