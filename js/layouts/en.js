@@ -1,13 +1,13 @@
 export default [
     {
-        small:'CapsLock',
+        small: 'CapsLock',
         shift: null,
-        code:'CapsLock',
+        code: 'CapsLock',
     },
     {
         small: '',
-        shift:'',
-        code:'Backquote',
+        shift: '',
+        code: 'Backquote',
     },
     {
         small: '',
