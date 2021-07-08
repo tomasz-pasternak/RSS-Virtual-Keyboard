@@ -21,8 +21,8 @@ export default [
     },
     {
         small: '4',
-        shift:'$',
-        code:'Digit4',
+        shift: '$',
+        code: 'Digit4',
     },
     {
         small: '5',
