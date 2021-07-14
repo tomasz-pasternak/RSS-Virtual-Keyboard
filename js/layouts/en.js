@@ -245,4 +245,19 @@ export default [
     shift: null,
     code: 'Win',
   },
+  {
+    small: '/',
+    shift: '?',
+    code: 'Slash',
+  },
+  {
+    small: ',',
+    shift: '<',
+    code: 'Coma',
+  },
+  {
+    small: '.',
+    shift: '>',
+    code: 'Period',
+  },
 ];
