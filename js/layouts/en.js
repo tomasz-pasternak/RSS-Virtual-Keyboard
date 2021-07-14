@@ -210,4 +210,39 @@ export default [
     shift: 'M',
     code: 'KeyM',
   },
+  {
+    small: '&larr;',
+    shift: null,
+    code: 'ArrowLeft',
+  },
+  {
+    small: '&uarr;',
+    shift: null,
+    code: 'ArrowUp',
+  },
+  {
+    small: '&darr;',
+    shift: null,
+    code: 'ArrowDown',
+  },
+  {
+    small: '&rarr;',
+    shift: null,
+    code: 'ArrowRight',
+  },
+  {
+    small: 'Space',
+    shift: null,
+    code: 'Space',
+  },
+  {
+    small: 'Alt',
+    shift: null,
+    code: 'AltRight',
+  },
+  {
+    small: 'Win',
+    shift: null,
+    code: 'Win',
+  },
 ];
