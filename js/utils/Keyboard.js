@@ -1,4 +1,4 @@
-
+/* eslint-disable import/extensions */
 import { get } from './storage.js';
 import Keyboard from './Keyboard.js';
 
@@ -9,9 +9,3 @@ const rowsOrder = [
   ['ShiftLeft', 'IntlBackslash', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Coma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight'],
   ['ControlLeft', 'Win', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight'],
 ];
-
-const lang = get('kbLang', '"en"');
-
-new Keyboard(rowsOrder)
-  .init(lang)
-  .generateLayout();
