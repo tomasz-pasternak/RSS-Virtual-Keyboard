@@ -1,5 +1,5 @@
-
-import { get } from './storage.js';
+/* eslint-disable import/extensions */
+import * as storage from './storage.js';
 import Keyboard from './Keyboard.js';
 
 const rowsOrder = [
@@ -15,3 +15,4 @@ const lang = get('kbLang', '"en"');
 new Keyboard(rowsOrder)
   .init(lang)
   .generateLayout();
+
