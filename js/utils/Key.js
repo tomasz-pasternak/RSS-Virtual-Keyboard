@@ -18,5 +18,3 @@ export default class Key {
     this.div = create('div', 'keyboard_key', [this.sub, this.letter], null, ['code', this.code]);
   }
 }
-
-// new Key()
