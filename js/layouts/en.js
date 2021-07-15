@@ -260,4 +260,69 @@ export default [
     shift: '>',
     code: 'Period',
   },
+  {
+    small: '\\',
+    shift: '/',
+    code: 'Backslash',
+  },
+  {
+    small: '/',
+    shift: '|',
+    code: 'IntlBackslash',
+  },
+  {
+    small: 'Shift',
+    shift: null,
+    code: 'ShiftLeft',
+  },
+  {
+    small: 'Shift',
+    shift: null,
+    code: 'ShiftRight',
+  },
+  {
+    small: 'Enter',
+    shift: null,
+    code: 'Enter',
+  },
+  {
+    small: 'CapsLock',
+    shift: null,
+    code: 'CapsLock',
+  },
+  {
+    small: 'Control',
+    shift: null,
+    code: 'ControlLeft',
+  },
+  {
+    small: 'Control',
+    shift: null,
+    code: 'ControlRight',
+  },
+  {
+    small: 'Alt',
+    shift: null,
+    code: 'AltLeft',
+  },
+  {
+    small: '[',
+    shift: '{',
+    code: 'BracketLeft',
+  },
+  {
+    small: ']',
+    shift: '}',
+    code: 'BrackeRight',
+  },
+  {
+    small: ':',
+    shift: ';',
+    code: 'Semicolon',
+  },
+  {
+    small: '"',
+    shift: '',
+    code: 'Quote',
+  },
 ];
