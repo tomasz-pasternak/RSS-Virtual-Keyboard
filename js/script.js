@@ -10,7 +10,7 @@ const rowsOrder = [
   ['ControlLeft', 'Win', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight'],
 ];
 
-const lang = get('kbLang', '"en"');
+const lang = storage.get('kbLang', '"en"');
 
 new Keyboard(rowsOrder)
   .init(lang)
