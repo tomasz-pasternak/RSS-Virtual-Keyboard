@@ -3,10 +3,13 @@
 /* eslint-disable import/extensions */
 import * as storage from './Storage.js';
 import create from './utils/create.js';
-import language from './layouts/index.js';
+import language from './layouts/index.js'; // languages export :  { ru, en }
 import Key from './Key.js';
 
-const main = create('main', '', [create('h1', 'title', 'RSS Virtual Keyboard')]);
+const main = create('main', '', 
+    [create('h1', 'title', 'RSS Virtual Keyboard'),
+    create('p', 'hint', 'Use left <kbd>Ctrl</kbd> + <kbd>Alt</kbd> to switch language. Last language saves in localStorage')
+  ]);
 
 export default class Keyboard {
   constructor(rowsOrder) {
@@ -42,5 +45,23 @@ export default class Keyboard {
         }
       });
     });
+    document.addEventListener('keydown', this.handleEvent);
+    document.addEventListener('keyup', this.handleEvent);
   }
-}
+
+  handleEvent = (e) => {
+    if(e.stopPropagation) e.stopPropagation();
+    const {code, type}  = e;
+    const keyObj = this.keyButtons.find((key) => key.code === code);
+    if(!keyObj) return;
+    this.output.focus();
+
+    if(type.match(/keydown|mousedown/)) {
+      if(type.match(/key/)) e.preventDefault();
+      keyObj.div.classList.add('active');
+  }else if(type.match(/keyup|mouseup/)) { 
+      keyObj.div.classList.add('active');
+  }
+
+  
+} 
