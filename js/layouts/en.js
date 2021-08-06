@@ -291,12 +291,12 @@ export default [
     code: 'CapsLock',
   },
   {
-    small: 'Cntrl',
+    small: 'Ctrl',
     shift: null,
     code: 'ControlLeft',
   },
   {
-    small: 'Cntrl',
+    small: 'Ctrl',
     shift: null,
     code: 'ControlRight',
   },
