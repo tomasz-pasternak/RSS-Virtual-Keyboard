@@ -6,9 +6,9 @@ import create from './utils/create.js';
 import language from './layouts/index.js'; // languages export :  { ru, en }
 import Key from './Key.js';
 
-const main = create('main', '', 
-    [create('h1', 'title', 'RSS Virtual Keyboard'),
-    create('p', 'hint', 'Use left <kbd>Ctrl</kbd> + <kbd>Alt</kbd> to switch language. Last language saves in localStorage')
+const main = create('main', '',
+  [create('h1', 'title', 'RSS Virtual Keyboard'),
+    create('p', 'hint', 'Use left <kbd>Ctrl</kbd> + <kbd>Alt</kbd> to switch language. Last language saves in localStorage'),
   ]);
 
 export default class Keyboard {
@@ -50,22 +50,53 @@ export default class Keyboard {
   }
 
   handleEvent = (e) => {
-    if(e.stopPropagation) e.stopPropagation();
-    const {code, type}  = e;
+    if (e.stopPropagation) e.stopPropagation();
+    const { code, type } = e;
     const keyObj = this.keyButtons.find((key) => key.code === code);
-    if(!keyObj) return;
+    if (!keyObj) return;
     this.output.focus();
 
-    if(type.match(/keydown|mousedown/)) {
-      if(type.match(/key/)) e.preventDefault();
+    if (type.match(/keydown|mousedown/)) {
+      if (type.match(/key/)) {
+        e.preventDefault();
+      }
       keyObj.div.classList.add('active');
-  }else if(type.match(/keyup|mouseup/)) { 
+      // Switch Language:
+      // Adding keyboard special flags for language switching
+      if (code.match(/Control/)) this.ctrlKey = true;
+      if (code.match(/Alt/)) this.altKey = true;
+
+      if (code.match(/Control/) && this.altKey) this.switchLanguage();
+      if (code.match(/Alt/) && this.ctrlKey) this.switchLanguage();
+    } else if (type.match(/keyup|mouseup/)) {
       keyObj.div.classList.add('active');
+      // Switch Language:
+      if (code.match(/Control/)) this.ctrlKey = false;
+      if (code.match(/Alt/)) this.altKey = false;
+    }
   }
 
-  switchLanguage = () =>{
-    const langAbrr = Object.keys(language); // => ['en', 'ru']
-    let lengIndx = langAbrr.indexOf(this.container.dataset.language); // 1 
-    this.keyBase = lengIndx + 1 < langAbrr.length ? language[langAbrr[lengIndx +=1]] : language[langAbrr[lengIndx -=lengIndx]];
+  switchLanguage = () => {
+    const langAbbr = Object.keys(language);
+    let langIdx = langAbbr.indexOf(this.container.dataset.language);
+    this.keyBase = langIdx + 1 < langAbbr.length
+      ? language[langAbbr[++langIdx]]
+      : language[langAbbr[langIdx -= langIdx]];
+
+    this.container.dataset.language = langAbbr[langIdx];
+    storage.set('kbLang', langAbbr[langIdx]);
+
+    this.keyButtons.forEach((button) => {
+      const keyObj = this.keyBase.find((key) => key.code === button.code);
+      if (!keyObj) return;
+      button.shift = keyObj.shift;
+      button.small = keyObj.small;
+      if (keyObj.shift && keyObj.shift.match(/[^a-zA-Zа-яА-ЯёЁ0-9]/g)) { // match all special characters
+        button.sub.innerHTML = keyObj.shift;
+      } else {
+        button.sub.innerHTML = '';
+      }
+      button.letter.innerHTML = keyObj.small;
+    });
   }
-} 
+}
