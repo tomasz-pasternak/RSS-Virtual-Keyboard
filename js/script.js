@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable import/extensions */
 import * as storage from './storage.js';
 import Keyboard from './Keyboard.js';
@@ -15,4 +16,3 @@ const lang = storage.get('kbLang', '"en"');
 new Keyboard(rowsOrder)
   .init(lang)
   .generateLayout();
-
