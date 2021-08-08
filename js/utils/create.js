@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /**
  * @param {HTMLElement} el
  * @param {String} classNames
